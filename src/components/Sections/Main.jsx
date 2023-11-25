@@ -14,7 +14,7 @@ function Main() {
       intervalId = setInterval(() => setTime(time + 1), 10);
     }
     return () => clearInterval(intervalId);
-  }, [isRunning, time, lab]);
+  }, [isRunning, time]);
 
   // * Calulate Time
   const minutes = String(Math.floor((time % 360000) / 6000)).padStart(2, "0");
@@ -34,6 +34,9 @@ function Main() {
   // *Reset Timer
   const reset = () => {
     setTime(0);
+    setLab([]);
+    setPlay("Start");
+    setIsRunning(false);
   };
   const addLab = () => {
     const newLab = `${minutes}:${seconds}:${milliseconds}`;
@@ -43,7 +46,7 @@ function Main() {
   };
   return (
     <div className="w-2/5 h-4/5 flex flex-col gap-8 items-center text-white overflow-y-scroll no-scrollbar relative">
-      <div className=" w-full items-center flex flex-col gap-8 sticky top-0 bg-[#212121]">
+      <div className=" w-full items-center flex flex-col gap-8 sticky top-0 bg-[#212121] z-50">
         <CounterText
           minutes={minutes}
           second={seconds}
