@@ -34,7 +34,6 @@ function Main() {
   // *Reset Timer
   const reset = () => {
     setTime(0);
-    setLab([]);
     setPlay("Start");
     setIsRunning(false);
   };
